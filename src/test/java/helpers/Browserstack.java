@@ -9,7 +9,7 @@ public class Browserstack {
 
         return given()
                 .log().all()
-                .auth().basic("zalinakodzova_4HPOF2", "qJHfFPiqQFywDYgqzbBK")
+                .auth().basic("zalinak_18sIpW", "wZvcJoW5ETMyPJXmPvu5")
                 .when()
                 .get(url)
                 .then()

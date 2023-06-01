@@ -6,11 +6,11 @@ import org.aeonbits.owner.Config;
 public interface BrowserstackConfig extends Config {
 
         @Key("browserstack.user")
-        @DefaultValue("zalinakodzova_4HPOF2")
+        @DefaultValue("zalinak_18sIpW")
         String getUser();
 
         @Key("browserstack.key")
-        @DefaultValue("qJHfFPiqQFywDYgqzbBK")
+        @DefaultValue("wZvcJoW5ETMyPJXmPvu5")
         String getKey();
 
         @Key("remoteUrl")
@@ -18,7 +18,7 @@ public interface BrowserstackConfig extends Config {
         String getRemoteUrl();
 
         @Key("app")
-        @DefaultValue("bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c")
+        @DefaultValue("bs://662af8fdb13f871b3b7a488ba0f8fe34622b032c")
         String getApp();
 
         @Key("device")
@@ -38,15 +38,6 @@ public interface BrowserstackConfig extends Config {
         String getBuildName();
 
         @Key("name")
-        @DefaultValue("first_test")
+        @DefaultValue("mobile_test")
         String getTestName();
-
-        @Key("appPackage")
-        @DefaultValue("com.todoist")
-        String appPackage();
-
-        @Key("appActivity")
-        @DefaultValue("com.todoist.alias.HomeActivityDefault")
-        String appActivity();
-
 }

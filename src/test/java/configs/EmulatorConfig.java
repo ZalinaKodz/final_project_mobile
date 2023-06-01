@@ -5,23 +5,19 @@ import org.aeonbits.owner.Config;
 @Config.Sources("classpath:config/emulator.properties")
 public interface EmulatorConfig extends Config {
     @Key("appPackage")
-    @DefaultValue("org.wikipedia.alpha")
+    @DefaultValue("pollen.sgolovanov.pollen2")
     String appPackage();
 
     @Key("appActivity")
-    @DefaultValue("org.wikipedia.main.MainActivity")
+    @DefaultValue("pollen.sgolovanov.pollen2.MainActivity")
     String appActivity();
 
     @Key("serverUrl")
     @DefaultValue("http://localhost:4723/wd/hub")
     String serverUrl();
 
-    @Key("appUrl")
-    @DefaultValue("https://github.com/wikimedia/apps-android-wikipedia/releases/download/latest/app-alpha-universal-release.apk?raw=true")
-    String appUrl();
-
     @Key("appPath")
-    @DefaultValue("src/test/resources/app/todoist.apk")
+    @DefaultValue("src/test/resources/app/pollen.sgolovanov.pollen2.apk")
     String appPath();
 
     @Key("deviceName")
@@ -31,4 +27,5 @@ public interface EmulatorConfig extends Config {
     @Key("platformVersion")
     @DefaultValue("11.0")
     String platformVersion();
+
 }

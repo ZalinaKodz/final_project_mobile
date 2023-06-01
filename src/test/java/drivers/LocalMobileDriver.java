@@ -1,6 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import configs.BrowserstackConfig;
 import configs.EmulatorConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -19,9 +20,11 @@ import static io.appium.java_client.remote.MobilePlatform.ANDROID;
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
 public class LocalMobileDriver implements WebDriverProvider {
+
+    public static EmulatorConfig config = ConfigFactory.create(EmulatorConfig.class, System.getProperties());
     public static URL getAppiumServerUrl() {
         try {
-            return new URL("http://localhost:4723/wd/hub");
+            return new URL(config.serverUrl());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -34,17 +37,17 @@ public class LocalMobileDriver implements WebDriverProvider {
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName(ANDROID)
-                .setDeviceName("Pixel 4 API 30")
-                .setPlatformVersion("11.0")
+                .setDeviceName(config.deviceName())
+                .setPlatformVersion(config.platformVersion())
                 .setApp(getAppPath())
-                .setAppPackage("com.todoist")
-                .setAppActivity("com.todoist.alias.HomeActivityDefault");
+                .setAppPackage(config.appPackage())
+                .setAppActivity(config.appActivity());
 
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
     private String getAppPath() {
-        String appPath = "src/test/resources/app/todoist.apk";
+        String appPath = config.appPath();
 
         File app = new File(appPath);
         return app.getAbsolutePath();

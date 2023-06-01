@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import drivers.BrowserstackDriver;
 import drivers.LocalMobileDriver;
 import helpers.Attach;
@@ -10,33 +11,35 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
 
 
 public class TestBase {
-    static String driver = System.getProperty("mobileDeviceHost", "browserstack");
+    static String deviceHost = System.getProperty("deviceHost", "browserstack");
 
     @BeforeAll
-    public static void setup() {
-        if (driver.equals("browserstack")) {
-            Configuration.browser = BrowserstackDriver.class.getName();
-        } else if (driver.equals("emulation")) {
-            Configuration.browser = LocalMobileDriver.class.getName();
-        } else {
-            throw new RuntimeException("Incorrect stand name");
+    public static void setup() throws Exception {
+        switch (deviceHost) {
+            case "browserstack":
+                Configuration.browser = BrowserstackDriver.class.getName();
+                break;
+            case "emulation":
+                Configuration.browser = LocalMobileDriver.class.getName();
+                break;
+            default:
+                throw new Exception("Unrecognised deviceHost");
         }
         Configuration.browserSize = null;
     }
 
     @BeforeEach
-    public void startDriver() {
-        addListener("AllureSelenide", new AllureSelenide());
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         open();
     }
 
     @AfterEach
-    public void afterEach() {
+    void afterEach() {
         String sessionId = sessionId().toString();
 
         // Attach.screenshotAs("Last screenshot");
@@ -44,10 +47,11 @@ public class TestBase {
 
         closeWebDriver();
 
-        if (driver.equals("browserstack")) {
+        if (deviceHost.equals("browserstack")) {
             Attach.addVideo(sessionId);
         }
+
     }
+
 }
-//}
 

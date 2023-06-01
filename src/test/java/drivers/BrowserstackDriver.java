@@ -1,6 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+
 import configs.BrowserstackConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
@@ -27,8 +28,6 @@ public class BrowserstackDriver implements WebDriverProvider {
 
         // Set URL of the application under test
         mutableCapabilities.setCapability("app", config.getApp());
-        mutableCapabilities.setCapability("appPackage", config.appPackage());
-        mutableCapabilities.setCapability("appActivity", config.appActivity());
 
         // Specify device and os_version for testing
         mutableCapabilities.setCapability("device", config.getDevice());
