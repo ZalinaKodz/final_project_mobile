@@ -6,11 +6,11 @@ import org.aeonbits.owner.Config;
 public interface BrowserstackConfig extends Config {
 
         @Key("browserstack.user")
-        @DefaultValue("zalinak_18sIpW")
+        @DefaultValue("valeryakodz_SgmBq0")
         String getUser();
 
         @Key("browserstack.key")
-        @DefaultValue("wZvcJoW5ETMyPJXmPvu5")
+        @DefaultValue("Bq2zxjeJqfKEmfwq8MND")
         String getKey();
 
         @Key("remoteUrl")
@@ -18,7 +18,7 @@ public interface BrowserstackConfig extends Config {
         String getRemoteUrl();
 
         @Key("app")
-        @DefaultValue("bs://662af8fdb13f871b3b7a488ba0f8fe34622b032c")
+        @DefaultValue("bs://d594907af383036336257498402a30c94362c75a")
         String getApp();
 
         @Key("device")

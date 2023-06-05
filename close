@@ -1,0 +1,41 @@
+[33mcommit 63fb05019cbf4460feab44314f3ec9ac76efd890[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Zalina Kodz <kod3ik87@gmail.com>
+Date:   Sun Jun 4 22:48:46 2023 +0300
+
+    changed config
+
+[33mcommit 8931f094d4b952b394cf8535b4cf05ea3513bf84[m
+Author: Zalina Kodz <kod3ik87@gmail.com>
+Date:   Sat Jun 3 19:10:51 2023 +0300
+
+    added fixes
+
+[33mcommit d9fad6cbbac29c0ca676349d56b8c2e754a8373b[m
+Author: Zalina Kodz <kod3ik87@gmail.com>
+Date:   Sat Jun 3 18:56:38 2023 +0300
+
+    added tag
+
+[33mcommit 29b64058c498d0904ad1a54552551f2d936ff530[m
+Author: Zalina Kodz <kod3ik87@gmail.com>
+Date:   Sat Jun 3 16:12:16 2023 +0300
+
+    added tag
+
+[33mcommit 69516997cb34aee2ca61061ac2d3c968d0e6137d[m
+Author: Zalina Kodz <kod3ik87@gmail.com>
+Date:   Fri Jun 2 22:59:45 2023 +0300
+
+    added notifications
+
+[33mcommit b92c7c3d3af89b04ecca51fc0aec54dbc2b86b77[m
+Author: Zalina Kodz <kod3ik87@gmail.com>
+Date:   Thu Jun 1 20:29:13 2023 +0300
+
+    added tests for browserstack
+
+[33mcommit 3ca797b30f29cfd7d8d06fbc8490e04c89e3bd27[m
+Author: Zalina Kodz <kod3ik87@gmail.com>
+Date:   Fri May 19 01:47:53 2023 +0300
+
+    1 commit
