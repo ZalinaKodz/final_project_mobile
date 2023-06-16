@@ -2,78 +2,86 @@ package tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.PollenClubPage;
+import pages.*;
 
-import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
 
 public class PollenClubTests extends TestBase {
+    String mainAllergen = "Birch";
+    String notationLink = "Detailed map description here";
+    String symptom = "Itching nose";
+    String systemicAction = "Systemic action";
+    String takingMedication = "Antihistamines (orally)";
+    String drugName = "Allegra";
+    String instructionText = "Record birch flowering stage, in order to allow other users have a more accurate picture of pollening, as well as to watch the dynamics of the marks for all the time";
 
     PollenClubPage pollenClubPage = new PollenClubPage();
+    ForecastPage forecastPage = new ForecastPage();
+    RiskMapPage riskMapPage = new RiskMapPage();
+    SymptomPage symptomPage = new SymptomPage();
+    TherapyPage therapyPage = new TherapyPage();
+    FenologyPage fenologyPage = new FenologyPage();
+
     @Test
     @DisplayName("Check if there is 'Birch' in list")
     void checkInListTest() {
-        step("Allow permission and navigate to the list", () ->
-                pollenClubPage.skipFirstPage());
+        step("Allow permission and skip first pages", () ->
+                pollenClubPage.givePermissionsAndSkipPages());
         step("Check Birch in list", () ->
-                pollenClubPage.checkMainAllergen());
+                forecastPage.checkMainAllergen(mainAllergen));
     }
 
     @Test
     @DisplayName("Check Risk Map")
     public void checkRiskMapTest() {
-        step("Skip pages", () ->
-                pollenClubPage.skipFirstPage());
+        step("Allow permission and skip first pages", () ->
+                pollenClubPage.givePermissionsAndSkipPages());
         step("Open map", () ->
-                sleep(10000));
-        pollenClubPage.openMapSection();
+                riskMapPage.openMapSection());
         step("Open notation'", () ->
-                pollenClubPage.openNotations());
+                riskMapPage.openNotations());
         step("Check that notation has link 'Detailed map description here'", () ->
-                pollenClubPage.checkLink());
+                riskMapPage.checkLink(notationLink));
         step("Close notation", () ->
-                pollenClubPage.closeNotations());
+                riskMapPage.closeNotations());
     }
 
     @Test
     @DisplayName("Check the symptom")
     public void checkSymptomTest() {
-        step("Skip pages", () ->
-                pollenClubPage.skipFirstPage());
-        sleep(15000);
+        step("Allow permission and skip first pages", () ->
+                pollenClubPage.givePermissionsAndSkipPages());
         step("Open symptoms", () ->
-                pollenClubPage.openSymptoms());
+                symptomPage.openSymptoms());
         step("Check that there is symptom 'Itching nose' in list", () ->
-                pollenClubPage.checkSymptom());
+                symptomPage.checkSymptom(symptom));
     }
 
     @Test
     @DisplayName("Choose scheme for therapy")
     public void setTherapyScheme() {
-        step("Skip pages", () ->
-                pollenClubPage.skipFirstPage());
-        sleep(10000);
+        step("Allow permission and skip first pages", () ->
+                pollenClubPage.givePermissionsAndSkipPages());
         step("Open 'Therapy'", () ->
-                pollenClubPage.openTherapy());
+                therapyPage.openTherapy());
         step("Choose 'Systemic action' ", () ->
-                pollenClubPage.chooseAction());
+                therapyPage.chooseAction(systemicAction));
         step("Choose 'Antihistamines' ", () ->
-                pollenClubPage.setAntihistamines());
-        step("Choose medicine ", () ->
-                pollenClubPage.chooseDrug());
-        step("Save scheme  ", () ->
-                pollenClubPage.saveScheme());
+                therapyPage.setAntihistamines(takingMedication));
+        step("Choose medicine", () ->
+                therapyPage.chooseDrug(drugName));
+        step("Save scheme", () ->
+                therapyPage.saveScheme());
     }
 
     @Test
     @DisplayName("Check text")
     public void checkFenologyPageTest() {
-        step("Skip pages", () ->
-                pollenClubPage.skipFirstPage());
-        sleep(10000);
+        step("Allow permission and skip first pages", () ->
+                pollenClubPage.givePermissionsAndSkipPages());
         step("Open fenology section ", () ->
-                pollenClubPage.openFenologyPage());
+                fenologyPage.openFenologyPage());
         step("Check that there is instruction", () ->
-                pollenClubPage.checkInstruction());
+                fenologyPage.checkInstruction(instructionText));
     }
 }
